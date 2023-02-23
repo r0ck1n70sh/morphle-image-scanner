@@ -12,6 +12,7 @@ io.on('connection', function(socket) {
 
     socket.on('move', function(req) {
         const { x, y } = req.pos
+        console.log(`moving -> ${x}, ${y}`)
             
         const instance = getInstance()
         instance.move(x, y)

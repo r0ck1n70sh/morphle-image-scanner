@@ -51,7 +51,10 @@ function setCursor(x, y) {
 
 function setFocus(x, y) {
     const prevCell = getCell(pos.x, pos.y)
-    prevCell.classList.remove('focussed')
+
+    if (prevCell) {
+        prevCell.classList.remove('focussed')
+    }
 
     const currCell = getCell(x, y)
     currCell.classList.add('focussed')
