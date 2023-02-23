@@ -30,10 +30,13 @@ class Machine {
             return this.pos
         }
 
-        return this.queue[this.queue.length - 1]
+        const last = this.queue[this.queue.length - 1]
+        this.queue = []
+        return last
     }
 
     #captureImage(x, y) {
+        this.#setPos({x, y})
         this.#setState(MachineState.CAPTURE)
 
         capture(x, y).then(() => {
@@ -45,15 +48,13 @@ class Machine {
     
             const currPos = this.#computeQueue()
             const x1 = currPos.x, y1 = currPos.y
-    
-            this.queue = []
-            this.#setPos({x: x1, y: y1})
 
             this.#focusImage(x1, y1)
         }).catch(e => console.error(e.message))
     }
 
     #focusImage(x, y) {
+        this.#setPos({x, y})
         this.#setState(MachineState.FOCUS)
     
         focus(x, y).then(() => {
@@ -64,9 +65,6 @@ class Machine {
     
             const currPos = this.#computeQueue()
             const x1 = currPos.x, y1 = currPos.y
-    
-            this.queue = []
-            this.#setPos({x: x1, y: y1})
 
             this.#focusImage(x1, y1)
         }).catch(e => console.error(e.message))
