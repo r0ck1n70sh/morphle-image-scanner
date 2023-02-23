@@ -1,0 +1,15 @@
+{
+  "name": "morple-image-scanner",
+  "version": "1.0.0",
+  "description": "gives pathologist remote image viewing, at real-time",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "RV",
+  "license": "UNLICENCED",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}
