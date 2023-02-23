@@ -57,6 +57,8 @@ function setFocus(x, y) {
     }
 
     const currCell = getCell(x, y)
+
+    if (!currCell) return
     currCell.classList.add('focussed')
 
     pos.x = x
